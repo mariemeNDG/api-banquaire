@@ -1,5 +1,4 @@
-package com.micda.BankAPI.EndPoint;
-
+package com.micda.BankAPI;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.ZoneId;
