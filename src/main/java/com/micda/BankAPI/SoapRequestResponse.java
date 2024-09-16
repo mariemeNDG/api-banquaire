@@ -1,4 +1,4 @@
-package com.micda.BankAPI.Soap;
+package com.micda.BankAPI;
 
 import java.math.BigDecimal;
 import java.sql.Date;
