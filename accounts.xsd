@@ -1,0 +1,71 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.com/accounts" targetNamespace="http://example.com/accounts" elementFormDefault="qualified">
+
+    <xs:element name="getBalanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accountId" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getBalanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="balance" type="xs:decimal" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTransactionsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accountId" type="xs:string" />
+                <xs:element name="pageNumber" type="xs:int" />
+                <xs:element name="pageSize" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTransactionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transactions" type="tns:transactionList" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="transactionList">
+        <xs:sequence>
+            <xs:element name="transaction" type="tns:transaction" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="transaction">
+        <xs:sequence>
+            <xs:element name="transactionId" type="xs:long" />
+            <xs:element name="date" type="xs:dateTime" />
+            <xs:element name="amount" type="xs:decimal" />
+            <xs:element name="description" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="transferFundsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="creditorId" type="xs:string" />
+                <xs:element name="debtorId" type="xs:string" />
+                <xs:element name="amount" type="xs:decimal" />
+                <xs:element name="currency" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="transferFundsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
